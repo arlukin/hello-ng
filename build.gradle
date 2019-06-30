@@ -39,8 +39,21 @@ test {
     }
 }
 
-shadowJar {
-    minimize()
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'se.cybercow.hellovertx.HelloVertxServer'
+    }
+
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
 }
+
+//shadowJar {
+//    minimize()
+//}
 
 project.tasks.assemble.dependsOn project.tasks.shadowJar

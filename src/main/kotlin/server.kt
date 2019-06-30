@@ -18,7 +18,7 @@ class HelloVertxServer : AbstractVerticle() {
                 .end("Hello World!")
         }
 
-        vertx.createHttpServer().requestHandler(router).listen(8082)
+        vertx.createHttpServer().requestHandler(router).listen(5000)
     }
 
     companion object {
