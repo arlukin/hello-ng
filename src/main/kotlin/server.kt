@@ -5,7 +5,7 @@ import io.vertx.core.Vertx
 import io.vertx.ext.web.Router
 import java.util.concurrent.CountDownLatch
 
-class HelloVertxServer : AbstractVerticle() {
+class HelloNGServer : AbstractVerticle() {
 
     @Throws(Exception::class)
     override fun start() {
@@ -15,7 +15,7 @@ class HelloVertxServer : AbstractVerticle() {
             routingContext
                 .response()
                 .putHeader("content-type", "text/html")
-                .end("Hello Vertx!!!")
+                .end("Hello Engine!")
         }
 
         vertx.createHttpServer().requestHandler(router).listen(5000)
@@ -25,7 +25,7 @@ class HelloVertxServer : AbstractVerticle() {
         @JvmStatic
         fun main(args: Array<String>) {
             val vertx = Vertx.vertx()
-            vertx.deployVerticle(HelloVertxServer())
+            vertx.deployVerticle(HelloNGServer())
 
             CountDownLatch(1).await()
         }

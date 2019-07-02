@@ -4,7 +4,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '5.0.0'
 }
 
-group 'se.cybercow'
+group 'se.springville'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -29,7 +29,6 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-
 test {
     useJUnitPlatform {
         includeEngines "junit-jupiter"
@@ -39,10 +38,9 @@ test {
     }
 }
 
-
 jar {
     manifest {
-        attributes 'Main-Class': 'se.cybercow.hellovertx.HelloVertxServer'
+        attributes 'Main-Class': 'se.cybercow.hellovertx.HelloNGServer'
     }
 
     from {
@@ -52,8 +50,8 @@ jar {
     }
 }
 
-//shadowJar {
-//    minimize()
-//}
+shadowJar {
+    minimize()
+}
 
 project.tasks.assemble.dependsOn project.tasks.shadowJar
