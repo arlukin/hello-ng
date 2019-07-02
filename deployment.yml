@@ -1,0 +1,58 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-ng
+  labels:
+    acex-service: hello-ng
+    version: "1.0"
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 5000
+      protocol: TCP
+  selector:
+    acex-service: hello-ng
+---
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: hello-ng
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      acex-service: hello-ng
+      version: "1.0"
+  template:
+    metadata:
+      labels:
+        acex-service: hello-ng
+        version: "1.0"
+    spec:
+      containers:
+        - name: hello-ng
+          image: gcr.io/bytapension/hello-ng:v1.0.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          resources:
+            limits:
+              memory: "200Mi"
+              cpu: "500m"
+            requests:
+              memory: "100Mi"
+              cpu: "250m"
+          livenessProbe:
+            httpGet:
+              path: /healthy
+              port: 5000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 5000
+            initialDelaySeconds: 3
+            periodSeconds: 3

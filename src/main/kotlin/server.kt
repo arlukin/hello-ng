@@ -15,7 +15,7 @@ class HelloVertxServer : AbstractVerticle() {
             routingContext
                 .response()
                 .putHeader("content-type", "text/html")
-                .end("Hello Vertx!")
+                .end("Hello Vertx!!!")
         }
 
         vertx.createHttpServer().requestHandler(router).listen(5000)
