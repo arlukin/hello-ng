@@ -3,8 +3,7 @@ apiVersion: v1
 metadata:
   name: hello-ng
   labels:
-    acex-service: hello-ng
-    version: "1.0"
+    springville-service: hello-ng
 spec:
   type: LoadBalancer
   ports:
@@ -23,17 +22,15 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      acex-service: hello-ng
-      version: "1.0"
+      springville-service: hello-ng
   template:
     metadata:
       labels:
-        acex-service: hello-ng
-        version: "1.0"
+        springville-service: hello-ng
     spec:
       containers:
         - name: hello-ng
-          image: gcr.io/bytapension/hello-ng:v1.0.1
+          image: ${REGISTRY}/springville/hello-ng:{$VERSION}
           imagePullPolicy: Always
           ports:
             - containerPort: 5000

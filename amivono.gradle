@@ -1,0 +1,54 @@
+import java.text.SimpleDateFormat
+
+//
+// Helper functions for gradle.
+//
+
+def versioning() {
+    def versionPropsFile = file('version.properties')
+    if (versionPropsFile.canRead()) {
+        def Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        def name = versionProps['VERSION_NAME']
+        def build = versionProps['VERSION_BUILD'].toInteger()
+        version = "${name}.${build}"
+
+        return [
+                version  : "${name}.${build}",
+                name     : name,
+                build    : build,
+                git_revision: grgit.head().id,
+                buildtime: new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date())
+        ]
+    } else {
+        throw new GradleException("Could not read version.properties!")
+    }
+}
+
+def increaseBuildNumber() {
+    def versionPropsFile = file('version.properties')
+    if (versionPropsFile.canRead()) {
+        def Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        def build = versionProps['VERSION_BUILD'].toString().toInteger() + 1
+        versionProps['VERSION_BUILD'] = build.toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+
+        def var = versioning()
+        println "Bumped version ${version}"
+    } else {
+        throw new GradleException("Could not read version.properties!")
+    }
+}
+
+def modifyFile(file, from, to)
+{
+    sed
+}
+
+// Export methods by turning them into closures
+ext {
+    versioning = this.&versioning
+    increaseBuildNumber = this.&increaseBuildNumber
+    modifyFile = this.&modifyFile
+}
