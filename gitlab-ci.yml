@@ -1,0 +1,61 @@
+image: gradle:alpine
+
+variables:
+  SCRIPTS_REPO: https://gitlab.com/springville/hello-ng.git
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+  - export SCRIPTS_DIR=$(mktemp -d)
+  - git clone -q --depth 1 "$SCRIPTS_REPO" "$SCRIPTS_DIR"
+
+stages:
+  - version
+  - build
+  - test
+
+version:
+  image: python:3.7-alpine
+  stage: version
+  script:
+    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+    - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - pip install semver
+    - $SCRIPTS_DIR/common/gen-semver > version
+  artifacts:
+    paths:
+      - version
+  only:
+    - master
+
+build:
+  stage: build
+  script:
+    - export VERSION="unknown"
+    - "[ -f ./version ] && export VERSION=$(cat ./version)"
+    - ./gradlew --build-cache assemble
+  artifacts:
+    paths:
+      - bin/
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - build
+      - .gradle
+  only:
+    - master
+
+test:
+  stage: test
+  script: ./gradlew check
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - build
+      - .gradle
+
+
