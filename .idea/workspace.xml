@@ -12,14 +12,8 @@
       <change afterPath="$PROJECT_DIR$/../../busserz/busserz-ui7b/www/pages/menu.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../busserz/busserz-ui7b/www/pages/products.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../busserz/busserz-ui7b/www/pages/products2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/hello-ng.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/gen-semver.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../busserz/busserz-ng/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../busserz/busserz-ng/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gitlab-ci.yml.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/version.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414.info" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.last-run" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.last-run" afterDir="false" />
@@ -86,10 +80,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/gitlab-ci.yml">
+        <entry file="file://$PROJECT_DIR$/.gitlab-ci.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29">
-              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+            <state relative-caret-position="157">
+              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -146,7 +140,6 @@
         <option value="$PROJECT_DIR$/src/test/kotlin/HelloVertxServerTest.kt" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-        <option value="$PROJECT_DIR$/.gitlab-ci.yml" />
         <option value="$PROJECT_DIR$/src/deployment.yml" />
         <option value="$PROJECT_DIR$/version.properties" />
         <option value="$PROJECT_DIR$/Dockerfile" />
@@ -161,6 +154,7 @@
         <option value="$PROJECT_DIR$/gitlab-ci.yml.bak" />
         <option value="$PROJECT_DIR$/deploy/gen-semver.py" />
         <option value="$PROJECT_DIR$/gitlab-ci.yml" />
+        <option value="$PROJECT_DIR$/.gitlab-ci.yml" />
       </list>
     </option>
   </component>
@@ -356,7 +350,7 @@
     <frame x="7" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -373,7 +367,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3299363" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32611465" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32611465" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32780612" />
       <window_info anchor="right" id="Coverage" side_tool="true" weight="0.3297568" />
@@ -642,10 +636,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitlab-ci.yml">
+    <entry file="file://$PROJECT_DIR$/.gitlab-ci.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        <state relative-caret-position="157">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
         </state>
       </provider>
     </entry>
