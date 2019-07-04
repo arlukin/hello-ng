@@ -25,7 +25,7 @@ def versioning() {
     }
 }
 
-def increaseBuildNumber() {
+def bumpBuildNumber() {
     def versionPropsFile = file('version.properties')
     if (versionPropsFile.canRead()) {
         def Properties versionProps = new Properties()
@@ -41,14 +41,9 @@ def increaseBuildNumber() {
     }
 }
 
-def modifyFile(file, from, to)
-{
-    sed
-}
-
 // Export methods by turning them into closures
 ext {
     versioning = this.&versioning
-    increaseBuildNumber = this.&increaseBuildNumber
+    bumpBuildNumber = this.&bumpBuildNumber
     modifyFile = this.&modifyFile
 }
