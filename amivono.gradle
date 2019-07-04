@@ -25,25 +25,7 @@ def versioning() {
     }
 }
 
-def bumpBuildNumber() {
-    def versionPropsFile = file('version.properties')
-    if (versionPropsFile.canRead()) {
-        def Properties versionProps = new Properties()
-        versionProps.load(new FileInputStream(versionPropsFile))
-        def build = versionProps['VERSION_BUILD'].toString().toInteger() + 1
-        versionProps['VERSION_BUILD'] = build.toString()
-        versionProps.store(versionPropsFile.newWriter(), null)
-
-        def var = versioning()
-        println "Bumped version ${version}"
-    } else {
-        throw new GradleException("Could not read version.properties!")
-    }
-}
-
 // Export methods by turning them into closures
 ext {
     versioning = this.&versioning
-    bumpBuildNumber = this.&bumpBuildNumber
-    modifyFile = this.&modifyFile
 }
