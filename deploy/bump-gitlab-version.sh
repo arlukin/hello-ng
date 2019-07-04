@@ -1,10 +1,25 @@
 #!/bin/bash
 
-# NOTE:
+# Bumps VERSION_BUILD in version.properties and push file to gitlab.
+# Will set environment variable VERSION_BUILD.
+#
+#
+# Setup GITLAB
+#
+# * mkfifo key key.pub && cat key key.pub & echo "y" | ssh-keygen -f key -q -N "" ; rm key key.pub
+# * Add settings to project
+#   * Add deploy key to gitlab Settings -> Repository
+#   * Add the private part as a new Variable in the Settings/CI/CD section, name it SSH_PRIVATE_KEY
+#
+# NOTE
 #   Need env SSH_PRIVATE_KEY to include ssh private key loaded in gitlab
 #
+# Read more
+#   https://threedots.tech/post/automatic-semantic-versioning-in-gitlab-ci/
+#
 # Test
-# docker run -it --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:5.5-jdk8 /bin/bash
+#   docker run -it --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:5.5-jdk8 /bin/bash
+
 
 #
 # Validate needed environment variables
