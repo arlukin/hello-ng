@@ -8,8 +8,8 @@ before_script:
 
 stages:
   - build
-  - test
   - docker
+  - test
 
 cache:
   paths:
@@ -35,8 +35,10 @@ test:
 
 
 docker:
-  image: docker:18
   stage: docker
+  image: docker:18
+  services:
+    - docker:dind
   script: ./deploy/docker-build-push.sh
 
 
