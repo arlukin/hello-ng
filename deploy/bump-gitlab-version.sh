@@ -55,16 +55,18 @@ export VERSION_BUILD
 
 #
 # Commit and push to gitlab
-#
-env
+# CI_JOB_TOKEN
 echo $SSH_PRIVATE_KEY
 echo "  New version $VERSION_FULL"
-ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+
 git config --global user.email "daniel@cybercow.se"
 git config --global user.name "Gradle"
 git add version.properties
 git commit -m"Bump version build to $VERSION_FULL"
-git push origin HEAD:master
+git remote add gitlab git@gitlab.com:springville/hello-ng.git
+git remote -v
+git push gitlab HEAD:master
+//git push http://${YOUR_USERNAME}:${PERSONAL_ACCESS_TOKEN}@gitlab.com/springville/hello-ng.git HEAD:master
 
 
 
