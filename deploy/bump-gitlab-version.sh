@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Bumps VERSION_BUILD in version.properties and push file to gitlab.
-# Will set environment variable VERSION_BUILD.
-#
+# Will set environment variable VERSION_FULL, VERSION_NAME, VERSION_BUILD.
 #
 # Setup GITLAB
 #
@@ -44,8 +43,13 @@ ssh-add <(echo "$SSH_PRIVATE_KEY")
 #
 # Read VERSION_BUILD from version.properties  file
 #
+VERSION_NAME=`grep 'VERSION_NAME=' version.properties | tail -n1 | cut -d"=" -f2`
 VERSION_BUILD=`grep 'VERSION_BUILD=' version.properties | tail -n1 | cut -d"=" -f2`
+VERSION_FULL="${VERSION_NAME}.${VERSION_BUILD}
+export VERSION_FULL
+export VERSION_NAME
 export VERSION_BUILD
+
 
 #
 # Commit and push to gitlab
@@ -53,5 +57,5 @@ export VERSION_BUILD
 git config --global user.email "daniel@cybercow.se"
 git config --global user.name "Gradle"
 git add version.properties
-git commit -m"Bump version build to $VERSION_BUILD"
+git commit -m"Bump version build to $VERSION_FULL"
 git push gitlab

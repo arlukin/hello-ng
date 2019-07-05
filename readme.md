@@ -1,20 +1,3 @@
-TODO
-* gitlab-ci.yml eller gitlab git hook
-    * pull master
-    * bump version
-    * commit push master 
-
-
-
-
-
-
-
-
-
-
-
-
 # hello-ng
 
 ## Build and Deploy

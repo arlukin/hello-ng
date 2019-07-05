@@ -38,7 +38,9 @@ dependencies {
 }
 
 
-// Variables that are read by kotlin.
+//
+// Create config file that are loaded from kotlin program.
+//
 task storeVersion {
     def ver = versioning()
     new File("$projectDir/src/main/resources/version.json").text = """{
@@ -51,6 +53,9 @@ task storeVersion {
 project.tasks.compileKotlin.dependsOn project.tasks.storeVersion
 
 
+//
+// Compile, Unit test and build jar file
+//
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
@@ -81,6 +86,10 @@ jar {
     }
 }
 
+
+//
+// Create ShadowJar/FatJar
+//
 shadowJar {
     //minimize()
     archiveFileName = "hello-ng-shadow.jar"
@@ -88,30 +97,34 @@ shadowJar {
 project.tasks.build.dependsOn project.tasks.shadowJar
 
 
-// Build docker image from Dockerfile in root
-import com.bmuschko.gradle.docker.tasks.image.*
-
-task buildDockerImage(type: DockerBuildImage) {
-    inputDir = file('.')
-    tags.add('springville/hello-ng:latest')
-
-    doLast {
-        // Buildnumber for next version
-        increaseBuildNumber()
-    }
-}
-project.tasks.buildDockerImage.dependsOn project.tasks.build
+//
+// Create K8s deployment file.
+//
 
 task localK8s(type: Copy) {
     from 'deployment.yml'
     into "$buildDir/"
     expand("REGISTRY": "localhost:9000", "VERSION": version)
 }
-project.tasks.localK8s.dependsOn project.tasks.buildDockerImage
+project.tasks.localK8s.dependsOn project.tasks.build
 
 task remoteK8s(type: Copy) {
     from 'deployment.yml'
     into "$buildDir/deployment-remote.yml"
     expand("REGISTRY": "gcr.io", "VERSION": version)
 }
-project.tasks.remoteK8s.dependsOn project.tasks.buildDockerImage
+project.tasks.remoteK8s.dependsOn project.tasks.build
+
+
+
+//
+// Build docker image from Dockerfile in root
+//
+import com.bmuschko.gradle.docker.tasks.image.*
+
+task buildDockerImage(type: DockerBuildImage) {
+    inputDir = file('.')
+    tags.add('springville/hello-ng:latest')
+}
+project.tasks.buildDockerImage.dependsOn project.tasks.build
+

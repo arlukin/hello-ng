@@ -1,51 +1,41 @@
-image: gradle:alpine
+image: gradle:5.5-jdk8
 
 variables:
-  SCRIPTS_REPO: https://gitlab.com/springville/hello-ng.git
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
-  - export SCRIPTS_DIR=$(mktemp -d)
-  - git clone -q --depth 1 "$SCRIPTS_REPO" "$SCRIPTS_DIR"
 
 stages:
   - build
   - test
+  - docker
+
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
 
 build:
   stage: build
   script:
-    - mkdir -p ~/.ssh && chmod 700 ~/.ssh
-    - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
-    - eval $(ssh-agent -s)
-    - ssh-add <(echo "$SSH_PRIVATE_KEY")
-    - pip install semver
-    - $SCRIPTS_DIR/common/gen-semver > version
-    - export VERSION="unknown"
-    - "[ -f ./version ] && export VERSION=$(cat ./version)"
-    - echo $VERSION
-    - ./gradlew --build-cache assemble
+    - bash ./deploy/bump-gitlab-version.sh
+    - ./gradlew --build-cache remoteK8s
   artifacts:
     paths:
-      - bin/
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
-    paths:
-      - build
-      - .gradle
+      - build/libs/*.jar
+    expire_in: 1 week
+
   only:
     - master
 
 test:
   stage: test
   script: ./gradlew check
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - build
-      - .gradle
+
+
+docker:
+  stage: docker
+  script: ./deploy/docker-build-push.sh
 
 
