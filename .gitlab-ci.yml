@@ -19,13 +19,11 @@ cache:
 build:
   stage: build
   script:
-    - bash ./deploy/bump-gitlab-version.sh
     - ./gradlew --build-cache remoteK8s
   artifacts:
     paths:
       - build/libs/*.jar
     expire_in: 1 week
-
   only:
     - master
 
@@ -33,12 +31,13 @@ test:
   stage: test
   script: ./gradlew check
 
-
 docker:
   stage: docker
   image: docker:18
   services:
     - docker:dind
-  script: ./deploy/docker-build-push.sh
+  script:
+    - ./deploy/docker-build-push.sh
+    - ./deploy/bump-gitlab-version.sh
 
 
