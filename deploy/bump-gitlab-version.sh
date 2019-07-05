@@ -17,8 +17,10 @@
 #   https://threedots.tech/post/automatic-semantic-versioning-in-gitlab-ci/
 #
 # Test
-#   docker run -it --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:5.5-jdk8 /bin/bash
+#   export SSH_PRIVATE_KEY=$(cat ~/.ssh/gitlab_id_rsa)
+#    docker run --env SSH_PRIVATE_KEY -it --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:5.5-jdk8 ./deploy/bump-gitlab-version.sh
 
+echo "Bump version number and push to gitlab."
 
 #
 # Validate needed environment variables
@@ -45,7 +47,7 @@ ssh-add <(echo "$SSH_PRIVATE_KEY")
 #
 VERSION_NAME=`grep 'VERSION_NAME=' version.properties | tail -n1 | cut -d"=" -f2`
 VERSION_BUILD=`grep 'VERSION_BUILD=' version.properties | tail -n1 | cut -d"=" -f2`
-VERSION_FULL="${VERSION_NAME}.${VERSION_BUILD}
+VERSION_FULL="${VERSION_NAME}.${VERSION_BUILD}"
 export VERSION_FULL
 export VERSION_NAME
 export VERSION_BUILD
@@ -54,6 +56,7 @@ export VERSION_BUILD
 #
 # Commit and push to gitlab
 #
+echo "  New version $VERSION_FULL"
 git config --global user.email "daniel@cybercow.se"
 git config --global user.name "Gradle"
 git add version.properties

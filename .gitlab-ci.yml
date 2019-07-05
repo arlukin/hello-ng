@@ -35,6 +35,7 @@ test:
 
 
 docker:
+  image: docker:18
   stage: docker
   script: ./deploy/docker-build-push.sh
 
