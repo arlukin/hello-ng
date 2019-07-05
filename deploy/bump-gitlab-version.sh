@@ -57,9 +57,15 @@ export VERSION_BUILD
 # Commit and push to gitlab
 #
 echo "  New version $VERSION_FULL"
+ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
 git config --global user.email "daniel@cybercow.se"
 git config --global user.name "Gradle"
 git add version.properties
 git commit -m"Bump version build to $VERSION_FULL"
+echo "11111111"
+git status
+git remote -v
+echo "2222222"
 git push gitlab HEAD:master
+echo "33333333"
 git status

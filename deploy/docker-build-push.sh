@@ -45,8 +45,8 @@ VERSION_FULL="${VERSION_NAME}.${VERSION_BUILD}"
 docker build -t $DOCKER_IMAGE_LOCAL . || { echo 'docker build failed' ; exit 1; }
 docker tag $DOCKER_IMAGE_LOCAL $DOCKER_IMAGE_REMOTE
 
-$GOOGLE_CLOUD_REGISTRY_PASS
-cat key.json | docker login -u _json_key --password-stdin https://gcr.io
+echo $GOOGLE_CLOUD_REGISTRY_PASS
+echo $GOOGLE_CLOUD_REGISTRY_PASS | docker login -u _json_key --password-stdin https://gcr.io
 docker push $DOCKER_IMAGE_REMOTE
 
 exit 0
