@@ -27,8 +27,7 @@ export PROJECT=springville
 export APP=hello-ng
 export KEY_NAME=gitlab-ci-push
 export KEY_DISPLAY_NAME="Gitlab CI Push"
-export DOCKER_IMAGE_LOCAL=${PROJECT}/${APP}:latest
-export DOCKER_IMAGE_REMOTE=gcr.io/${PROJECT}/${APP}:${VERSION_FULL}
+
 
 #
 # Get version number
@@ -37,6 +36,13 @@ VERSION_NAME=`grep 'VERSION_NAME=' version.properties | tail -n1 | cut -d"=" -f2
 VERSION_BUILD=`grep 'VERSION_BUILD=' version.properties | tail -n1 | cut -d"=" -f2`
 VERSION_FULL="${VERSION_NAME}.${VERSION_BUILD}"
 [ -z "$VERSION_FULL" ] && echo "Failed to get VERSION_FULL" && exit
+
+
+#
+# Variables used in script
+#
+export DOCKER_IMAGE_LOCAL=${PROJECT}/${APP}:latest
+export DOCKER_IMAGE_REMOTE=gcr.io/${PROJECT}/${APP}:${VERSION_FULL}
 
 
 #
