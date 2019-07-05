@@ -18,7 +18,7 @@
 #
 # Test
 #   export SSH_PRIVATE_KEY=$(cat ~/.ssh/gitlab_id_rsa)
-#    docker run --env SSH_PRIVATE_KEY -it --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:5.5-jdk8 ./deploy/bump-gitlab-version.sh
+#   docker run --env SSH_PRIVATE_KEY -it --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:5.5-jdk8 ./deploy/bump-gitlab-version.sh
 
 echo "Bump version number and push to gitlab."
 
@@ -63,4 +63,4 @@ git config --global user.email "daniel@cybercow.se"
 git config --global user.name "Gradle"
 git add version.properties
 git commit -m"Bump version build to $VERSION_FULL"
-git push gitlab
+git push gitlab -- master
