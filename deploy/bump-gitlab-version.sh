@@ -66,6 +66,6 @@ echo "11111111"
 git status
 git remote -v
 echo "2222222"
-git push gitlab HEAD:master
+git push origin HEAD:master
 echo "33333333"
 git status
