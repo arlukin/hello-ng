@@ -63,4 +63,7 @@ git config --global user.email "daniel@cybercow.se"
 git config --global user.name "Gradle"
 git add version.properties
 git commit -m"Bump version build to $VERSION_FULL"
-git push gitlab -- master
+git status
+git push gitlab HEAD:master
+git push gitlab master
+git status
