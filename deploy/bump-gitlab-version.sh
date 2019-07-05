@@ -57,6 +57,8 @@ export VERSION_BUILD
 # Commit and push to gitlab
 #
 echo "  New version $VERSION_FULL"
+git status
+git remote -v
 git config --global user.email "daniel@cybercow.se"
 git config --global user.name "Gradle"
 git add version.properties
