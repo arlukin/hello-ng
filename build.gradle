@@ -110,7 +110,7 @@ project.tasks.localK8s.dependsOn project.tasks.build
 
 task remoteK8s(type: Copy) {
     from 'deployment.yml'
-    into "$buildDir/deployment-remote.yml"
+    into "$buildDir/"
     expand("REGISTRY": "gcr.io", "VERSION": version)
 }
 project.tasks.remoteK8s.dependsOn project.tasks.build
