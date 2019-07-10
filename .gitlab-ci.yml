@@ -27,6 +27,7 @@ build:
     paths:
       - build/libs/*.jar
       - build/deployment.yml
+      - version.properties
     expire_in: 1 week
   only:
     - master
