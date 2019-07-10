@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
         - name: hello-ng
-          image: ${REGISTRY}/springville/hello-ng:{$VERSION}
+          image: ${REGISTRY}/springville/hello-ng:${VERSION}
           imagePullPolicy: Always
           ports:
             - containerPort: 5000

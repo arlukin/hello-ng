@@ -13,7 +13,8 @@
       <change afterPath="$PROJECT_DIR$/../../busserz/busserz-ui7b/www/pages/products.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../busserz/busserz-ui7b/www/pages/products2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../busserz/busserz-ng/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../busserz/busserz-ng/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deployment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/deployment.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414.info" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.last-run" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.last-run" afterDir="false" />
@@ -80,20 +81,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/deployment.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="48" column="23" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="23" />
+            <state relative-caret-position="229">
+              <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitlab-ci.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+            <state relative-caret-position="392">
+              <caret line="54" column="43" lean-forward="true" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -127,7 +128,9 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build/deployment.yml">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-307" />
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -217,9 +220,9 @@
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/deploy/bump-gitlab-version.sh" />
         <option value="$PROJECT_DIR$/deploy/docker-build-push.sh" />
-        <option value="$PROJECT_DIR$/deployment.yml" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/.gitlab-ci.yml" />
+        <option value="$PROJECT_DIR$/deployment.yml" />
       </list>
     </option>
   </component>
@@ -685,13 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deployment.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="48" column="23" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deploy/docker-build-push.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -713,13 +709,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build/deployment.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitlab-ci.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+        <state relative-caret-position="392">
+          <caret line="54" column="43" lean-forward="true" selection-start-line="54" selection-start-column="6" selection-end-line="54" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/deployment.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-307" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deployment.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="37" column="51" selection-start-line="37" selection-start-column="51" selection-end-line="37" selection-end-column="51" />
         </state>
       </provider>
     </entry>
