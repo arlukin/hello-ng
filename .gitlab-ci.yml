@@ -21,13 +21,13 @@ cache:
 build:
   stage: build
   script:
-    - ./deploy/bump-gitlab-version.sh
+    - ./deploy/bump-gitlab-version-tag.sh
     - ./gradlew --build-cache remoteK8s
   artifacts:
     paths:
       - build/libs/*.jar
       - build/deployment.yml
-      - version.properties
+      - build/generated-resources/version.config
     expire_in: 1 week
   only:
     - master

@@ -31,40 +31,36 @@ echo "Bump version number and push to gitlab."
 
 
 #
-# Bump VERSION_BUILD
+# Bump version read from last git tag
 #
-sed -i -r 's/(.*)(VERSION_BUILD=)([0-9]+)(.*)/echo "\1\2$((\3+1))\4"/ge'  version.properties
-sed -r 's/(.*)(VERSION_BUILD=)([0-9]+)(.*)/echo "\3"/ge'  version.properties
-
+{
+    VERSION=`git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=1 |  awk 'BEGIN{FS=".";OFS="."} {$NF+=1; print $0}'`
+} &> /dev/null
+echo "  New version $VERSION"
+[ "$VERSION" == "1.." ] && VERSION="2.0.0"
+[ -z "$VERSION" ] && VERSION="1.0.0"
+echo "  New version $VERSION"
 
 #
 # Set up ssh keys for git
 #
-mkdir -p ~/.ssh && chmod 700 ~/.ssh
-ssh-keyscan gitlab.com >> ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
-eval $(ssh-agent -s)
-ssh-add <(echo "$SSH_PRIVATE_KEY")
-
-
-#
-# Read VERSION_BUILD from version.properties  file
-#
-VERSION_NAME=`grep 'VERSION_NAME=' version.properties | tail -n1 | cut -d"=" -f2`
-VERSION_BUILD=`grep 'VERSION_BUILD=' version.properties | tail -n1 | cut -d"=" -f2`
-VERSION_FULL="${VERSION_NAME}.${VERSION_BUILD}"
-export VERSION_FULL
-export VERSION_NAME
-export VERSION_BUILD
+echo "  Setup SSH"
+{
+    mkdir -p ~/.ssh && chmod 700 ~/.ssh
+    ssh-keyscan gitlab.com >> ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
+    eval $(ssh-agent -s)
+    ssh-add <(echo "$SSH_PRIVATE_KEY")
+} &> >(sed 's/^/    /')
 
 
 #
 # Commit and push to gitlab
 #
-echo "  New version $VERSION_FULL"
-
-git config --global user.email "daniel@cybercow.se"
-git config --global user.name "Gradle"
-git add version.properties
-git commit -m"Bump version build to $VERSION_FULL"
-git remote add gitlab git@gitlab.com:springville/hello-ng.git
-git push -o ci.skip gitlab HEAD:master
+echo "  Push git tag"
+{
+    git config --global user.email "daniel@cybercow.se"
+    git config --global user.name "Gradle"
+    git tag $VERSION
+    git remote add origin git@gitlab.com:springville/hello-ng.git
+    git push origin --tag
+} 2> >(sed 's/^/    /')

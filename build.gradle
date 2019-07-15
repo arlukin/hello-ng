@@ -2,18 +2,16 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.3.40'
     // Building shadowjar/fatjar
     id 'com.github.johnrengelman.shadow' version '5.0.0'
-    // Build docker images
-    id 'com.bmuschko.docker-remote-api' version '4.10.0'
     // https://mvnrepository.com/artifact/org.ajoberstar/grgit
     id "org.ajoberstar.grgit" version "1.7.2"
 
 }
 
-apply from: "$rootDir/amivono.gradle"
-//apply from: "https://bitbucket.org/mb/build_scripts/raw/master/common-methods.gradle"
+import java.text.SimpleDateFormat
+
 
 group 'se.springville'
-version = versioning().version
+version = grgit.tag.list().collect() { it.name }.sort().reverse(true)[0]
 
 repositories {
     mavenCentral()
@@ -37,22 +35,6 @@ dependencies {
     implementation 'io.vertx:vertx-lang-kotlin:3.7.1'
 }
 
-
-//
-// Create config file that are loaded from kotlin program.
-//
-task storeVersion {
-    def ver = versioning()
-    new File("$projectDir/src/main/resources/version.json").text = """{
-    "version": "${ver.version}",
-    "revision": "${ver.git_revision}",
-    "buildtime": "${ver.buildtime}"
-}
-"""
-}
-project.tasks.compileKotlin.dependsOn project.tasks.storeVersion
-
-
 //
 // Compile, Unit test and build jar file
 //
@@ -63,6 +45,20 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+//
+// Create config file that are loaded from kotlin program.
+//
+task generateResources(type: WriteProperties) {
+    outputFile("${project.buildDir}/generated-resources/version.config")
+    property("version", version)
+    property("git_revision", grgit.head().id)
+    property("buildtime", new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()))
+}
+
+project.tasks.processResources.dependsOn project.tasks.generateResources
+sourceSets.main.resources.srcDirs += [ "$buildDir/generated-resources" ]
+sourceSets.test.resources.srcDirs += [ "$buildDir/generated-resources" ]
 
 test {
     useJUnitPlatform {
@@ -91,7 +87,7 @@ jar {
 // Create ShadowJar/FatJar
 //
 shadowJar {
-    //minimize()
+    // TODO minimize()
     archiveFileName = "hello-ng-shadow.jar"
 }
 project.tasks.build.dependsOn project.tasks.shadowJar
@@ -100,7 +96,6 @@ project.tasks.build.dependsOn project.tasks.shadowJar
 //
 // Create K8s deployment file.
 //
-
 task localK8s(type: Copy) {
     from 'deployment.yml'
     into "$buildDir/"
@@ -114,17 +109,4 @@ task remoteK8s(type: Copy) {
     expand("REGISTRY": "gcr.io", "VERSION": version)
 }
 project.tasks.remoteK8s.dependsOn project.tasks.build
-
-
-
-//
-// Build docker image from Dockerfile in root
-//
-import com.bmuschko.gradle.docker.tasks.image.*
-
-task buildDockerImage(type: DockerBuildImage) {
-    inputDir = file('.')
-    tags.add('springville/hello-ng:latest')
-}
-project.tasks.buildDockerImage.dependsOn project.tasks.build
 
