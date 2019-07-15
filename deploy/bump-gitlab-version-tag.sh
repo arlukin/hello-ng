@@ -48,12 +48,9 @@ echo "  Setup SSH"
     mkdir -p ~/.ssh && chmod 700 ~/.ssh
     ssh-keyscan gitlab.com >> ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
     eval $(ssh-agent -s)
-    echo "funced 1"
     ssh-add <(echo "$SSH_PRIVATE_KEY")
-    echo "funced 2"
 } &> >(sed 's/^/    /')
-echo $?
-echo "funced 3"
+
 #
 # Commit and push to gitlab
 #
@@ -66,4 +63,4 @@ echo "  Push git tag"
     git push origin --tag
 } 2> >(sed 's/^/    /')
 
-echo "Bumped"
+echo "END"
