@@ -1,39 +1,31 @@
 #!/bin/sh
 
-# Push docker image too google cloud registry.
-#
-#
-# Setup GITLAB
-#
-# * mkfifo key key.pub && cat key key.pub & echo "y" | ssh-keygen -f key -q -N "" ; rm key key.pub
-# * Add settings to project
-#   * Add deploy key to gitlab Settings -> Repository
-#   * Add the private part as a new Variable in the Settings/CI/CD section, name it SSH_PRIVATE_KEY
+# Build and push docker image too google cloud registry.
 #
 # NOTE
-#   Need env SSH_PRIVATE_KEY to include ssh private key loaded in gitlab
-#
-# Read more
-#   https://threedots.tech/post/automatic-semantic-versioning-in-gitlab-ci/
+#   Need env $GOOGLE_CLOUD_REGISTRY_PASS to include ssh private key loaded in gitlab
+#   The env represent the service account for Cloud Registry. Instructions for this
+#   can be found in the readme file in springville-cluster project.
 #
 # Test
-#   docker run -it --rm --privileged -v "$PWD":/home/docker/project -w /home/docker/project docker:18 /bin/sh
-
+#   export GOOGLE_CLOUD_REGISTRY_PASS=`cat key.json`
+#   docker run --name "docker-builder" -d --privileged docker:18-dind
+#   docker run -it --rm --link docker-builder:docker --env GOOGLE_CLOUD_REGISTRY_PASS  -v "$PWD":/home/docker/project -w /home/docker/project docker:18  ./deploy/docker-build-push.sh
+#   docker kill docker-builder
 
 #
 # Configuration, needs to be done per project.
 #
 export PROJECT=springville
 export APP=hello-ng
-export KEY_NAME=gitlab-ci-push
-export KEY_DISPLAY_NAME="Gitlab CI Push"
 
 
 #
 # Get version number
 #
 VERSION=`grep 'version=' build/generated-resources/version.config | tail -n1 | cut -d"=" -f2`
-[ -z "$VERSION" ] && echo "Failed to get VERSION" && exit
+[ -z "$VERSION" ] && echo "Failed to get VERSION." && exit
+[ -z "$GOOGLE_CLOUD_REGISTRY_PASS" ] && echo "Failed to get GOOGLE_CLOUD_REGISTRY_PASS." && exit
 
 
 #
@@ -41,6 +33,7 @@ VERSION=`grep 'version=' build/generated-resources/version.config | tail -n1 | c
 #
 export DOCKER_IMAGE_LOCAL=${PROJECT}/${APP}:latest
 export DOCKER_IMAGE_REMOTE=gcr.io/${PROJECT}/${APP}:${VERSION}
+echo "Build $DOCKER_IMAGE_REMOTE"
 
 
 #
@@ -51,17 +44,3 @@ docker tag $DOCKER_IMAGE_LOCAL $DOCKER_IMAGE_REMOTE
 
 echo $GOOGLE_CLOUD_REGISTRY_PASS | docker login -u _json_key --password-stdin https://gcr.io
 docker push $DOCKER_IMAGE_REMOTE
-
-exit 0
-
-#
-# Setup service account
-#
-gcloud iam service-accounts create ${KEY_NAME} --display-name="${KEY_DISPLAY_NAME}"
-gcloud iam service-accounts list
-gcloud iam service-accounts keys create --iam-account ${KEY_NAME}@${PROJECT}.iam.gserviceaccount.com key.json
-
-# TODO check other permissions https://cloud.google.com/storage/docs/access-control/iam-roles
-gcloud projects add-iam-policy-binding ${PROJECT} \
-    --member serviceAccount:${KEY_NAME}@${PROJECT}.iam.gserviceaccount.com \
-    --role roles/storage.admin
