@@ -35,6 +35,8 @@ build:
 test:
   stage: test
   script: ./gradlew check
+  only:
+    - master
 
 docker:
   stage: docker
@@ -43,6 +45,8 @@ docker:
     - docker:dind
   script:
     - ./deploy/docker-build-push.sh
+  only:
+    - master
 
 deploy:
   stage: deploy
@@ -54,4 +58,5 @@ deploy:
     - kubectl config set-context default --cluster=k8s --user=gitlab
     - kubectl config use-context default
     - kubectl apply -f build/deployment.yml
-
+  only:
+    - master
