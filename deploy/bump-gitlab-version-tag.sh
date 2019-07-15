@@ -36,7 +36,6 @@ echo "Bump version number and push to gitlab."
 {
     VERSION=`git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=1 |  awk 'BEGIN{FS=".";OFS="."} {$NF+=1; print $0}'`
 } &> /dev/null
-echo "  New version $VERSION"
 [ "$VERSION" == "1.." ] && VERSION="2.0.0"
 [ -z "$VERSION" ] && VERSION="1.0.0"
 echo "  New version $VERSION"
@@ -49,10 +48,12 @@ echo "  Setup SSH"
     mkdir -p ~/.ssh && chmod 700 ~/.ssh
     ssh-keyscan gitlab.com >> ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
     eval $(ssh-agent -s)
+    echo "funced 1"
     ssh-add <(echo "$SSH_PRIVATE_KEY")
+    echo "funced 2"
 } &> >(sed 's/^/    /')
-
-
+echo $?
+echo "funced 3"
 #
 # Commit and push to gitlab
 #
@@ -64,3 +65,5 @@ echo "  Push git tag"
     git remote add origin git@gitlab.com:springville/hello-ng.git
     git push origin --tag
 } 2> >(sed 's/^/    /')
+
+echo "Bumped"

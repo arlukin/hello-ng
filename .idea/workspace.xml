@@ -13,15 +13,7 @@
       <change afterPath="$PROJECT_DIR$/../../busserz/busserz-ui7b/www/pages/products.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../busserz/busserz-ui7b/www/pages/products2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../busserz/busserz-ng/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../busserz/busserz-ng/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amivono.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deploy/bump-gitlab-version-tag.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy/bump-gitlab-version-tag.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy/docker-build-push.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy/docker-build-push.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/server.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/server.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/version.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/version.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414.info" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.last-run" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.last-run" afterDir="false" />
@@ -73,11 +65,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
               <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/deploy/bump-gitlab-version-tag.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="55" column="15" selection-start-line="55" selection-start-column="15" selection-end-line="55" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -172,12 +173,12 @@
         <option value="$PROJECT_DIR$/deployment.yml" />
         <option value="$PROJECT_DIR$/build/deployment.yml" />
         <option value="$PROJECT_DIR$/deploy/bump-gitlab-version.sh" />
-        <option value="$PROJECT_DIR$/deploy/bump-gitlab-version-tag.sh" />
         <option value="$PROJECT_DIR$/amivono.gradle" />
         <option value="$PROJECT_DIR$/src/main/kotlin/server.kt" />
         <option value="$PROJECT_DIR$/.gitlab-ci.yml" />
         <option value="$PROJECT_DIR$/deploy/docker-build-push.sh" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/deploy/bump-gitlab-version-tag.sh" />
       </list>
     </option>
   </component>
@@ -427,7 +428,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3299363" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.2878981" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2878981" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32780612" />
       <window_info anchor="right" id="Coverage" side_tool="true" weight="0.3297568" />
@@ -628,13 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/bump-gitlab-version-tag.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="41" column="25" lean-forward="true" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
@@ -757,6 +751,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/bump-gitlab-version-tag.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="55" column="15" selection-start-line="55" selection-start-column="15" selection-end-line="55" selection-end-column="15" />
         </state>
       </provider>
     </entry>
