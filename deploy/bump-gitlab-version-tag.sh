@@ -33,36 +33,34 @@ echo "Bump version number and push to gitlab."
 #
 # Bump version read from last git tag
 #
-echo `git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=10`
-git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=1 |  awk 'BEGIN{FS=".";OFS="."} {$NF+=1; print $0}'
 {
     VERSION=`git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=1 |  awk 'BEGIN{FS=".";OFS="."} {$NF+=1; print $0}'`
 } &> /dev/null
 [ "$VERSION" == "1.." ] && VERSION="1.0.0"
 [ -z "$VERSION" ] && VERSION="1.0.0"
+echo -n "  Last 10 versions: "
+echo `git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=10`
 echo "  New version $VERSION"
+
 
 #
 # Set up ssh keys for git
 #
 echo "  Setup SSH"
-{
-    mkdir -p ~/.ssh && chmod 700 ~/.ssh
-    ssh-keyscan gitlab.com >> ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
-    eval $(ssh-agent -s)
-    ssh-add <(echo "$SSH_PRIVATE_KEY")
-} &> >(sed 's/^/    /')
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+ssh-keyscan gitlab.com >> ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
+eval $(ssh-agent -s)
+ssh-add <(echo "$SSH_PRIVATE_KEY")
+
 
 #
 # Commit and push to gitlab
 #
 echo "  Push git tag"
-{
-    git config --global user.email "daniel@cybercow.se"
-    git config --global user.name "Gradle"
-    git tag $VERSION
-    git remote add origin git@gitlab.com:springville/hello-ng.git
-    git push origin --tag
-} &> >(sed 's/^/    /')
+git config --global user.email "daniel@cybercow.se"
+git config --global user.name "Gradle"
+git tag $VERSION
+git remote add origin git@gitlab.com:springville/hello-ng.git
+git push origin --tag
 
 echo "END"
