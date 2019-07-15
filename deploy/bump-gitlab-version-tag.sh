@@ -62,5 +62,3 @@ git config --global user.name "Gradle"
 git tag $VERSION
 git remote add origin git@gitlab.com:springville/hello-ng.git
 git push origin --tag
-
-echo "END"
