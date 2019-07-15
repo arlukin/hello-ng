@@ -60,5 +60,4 @@ echo "  Push git tag"
 git config --global user.email "daniel@cybercow.se"
 git config --global user.name "Gradle"
 git tag $VERSION
-git remote add origin git@gitlab.com:springville/hello-ng.git
 git push origin --tag
