@@ -21,18 +21,14 @@
 #   docker run --env SSH_PRIVATE_KEY -it --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:5.5-jdk8 ./deploy/bump-gitlab-version-tag.sh
 
 
-echo "Bump version number and push to gitlab."
-
-
 #
 # Validate needed environment variables
 #
 [ -z "$SSH_PRIVATE_KEY" ] && echo "Need SSH_PRIVATE_KEY" && exit
 
 
-#
-# Bump version read from last git tag
-#
+echo "Bump version read from last git tag"
+echo "====================================="
 {
     VERSION=`git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=1 |  awk 'BEGIN{FS=".";OFS="."} {$NF+=1; print $0}'`
 } &> /dev/null
@@ -43,22 +39,20 @@ echo `git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' 
 echo "  New version $VERSION"
 
 
-#
-# Set up ssh keys for git
-#
-echo "  Setup SSH"
+echo
+echo "Setup SSH keys for git"
+echo "========================"
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 ssh-keyscan gitlab.com >> ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
 eval $(ssh-agent -s)
 ssh-add <(echo "$SSH_PRIVATE_KEY")
 
 
-#
-# Commit and push to gitlab
-#
-echo "  Push git tag"
+echo
+echo "Commit and push to gitlab"
+echo "========================="
 git config --global user.email "daniel@cybercow.se"
 git config --global user.name "Gradle"
 git tag $VERSION
-git remote -v
-git push origin --tag
+git remote add gitlab git@gitlab.com:springville/hello-ng.git
+git push gitlab --tag
