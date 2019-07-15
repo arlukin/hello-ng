@@ -13,8 +13,8 @@
       <change afterPath="$PROJECT_DIR$/../../busserz/busserz-ui7b/www/pages/products.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../busserz/busserz-ui7b/www/pages/products2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../busserz/busserz-ng/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../busserz/busserz-ng/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/version.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/version.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414.info" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.cache/01524fae79697630d0454ba3fabd9414.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../var/sublime/Package Control.last-run" beforeDir="false" afterPath="$PROJECT_DIR$/../../../var/sublime/Package Control.last-run" afterDir="false" />
@@ -58,15 +58,21 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gradle.properties">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/server.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="47">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor />
+              <first_editor relative-caret-position="1425">
+                <caret line="95" selection-start-line="95" selection-end-line="95" selection-end-column="12" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -90,7 +96,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitlab-ci.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="248">
@@ -136,7 +142,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deploy/docker-build-push.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
+            <state relative-caret-position="557">
               <caret line="53" selection-start-line="53" selection-end-line="53" />
             </state>
           </provider>
@@ -180,6 +186,7 @@
       <find>build</find>
       <find>docker build</find>
       <find>env</find>
+      <find>log</find>
     </findStrings>
     <replaceStrings>
       <replace>hellovertx</replace>
@@ -262,6 +269,24 @@
               <item name="hello-ng" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="gradle" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="hello-ng" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hello-ng" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hello-ng" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hello-ng" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="hello-ng" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hello-ng" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -300,7 +325,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.hello-ng [bumpBuildNumber]">
+  <component name="RunManager" selected="Kotlin.se.cybercow.hellovertx.HelloNGServer">
     <configuration name="HelloVertxServerTest.getRootSucceed" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -387,8 +412,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.hello-ng [bumpBuildNumber]" />
         <item itemvalue="Kotlin.se.cybercow.hellovertx.HelloNGServer" />
+        <item itemvalue="Gradle.hello-ng [bumpBuildNumber]" />
         <item itemvalue="Gradle.hello-ng [hello]" />
         <item itemvalue="Gradle.HelloVertxServerTest.getRootSucceed" />
         <item itemvalue="Kotlin.se.cybercow.hellovertx.HelloVertxServer" />
@@ -435,7 +460,7 @@
     <frame x="7" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -446,13 +471,13 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32738853" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32611465" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39617833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3299363" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2878981" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.2878981" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32780612" />
       <window_info anchor="right" id="Coverage" side_tool="true" weight="0.3297568" />
@@ -611,16 +636,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/version.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/server.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="41" column="23" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
-          <folding>
-            <element signature="e#32#322#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/resources/main/version.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -673,25 +688,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/deploy/bump-gitlab-version.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
           <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/docker-build-push.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
@@ -725,6 +725,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
           <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deploy/docker-build-push.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/server.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="1425">
+            <caret line="95" selection-start-line="95" selection-end-line="95" selection-end-column="12" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
