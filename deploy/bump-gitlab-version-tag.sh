@@ -18,7 +18,7 @@
 #
 # Test
 #   export SSH_PRIVATE_KEY=$(cat ~/.ssh/gitlab_id_rsa)
-#   docker run --env SSH_PRIVATE_KEY -it --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:5.5-jdk8 ./deploy/bump-gitlab-version.sh
+#   docker run --env SSH_PRIVATE_KEY -it --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:5.5-jdk8 ./deploy/bump-gitlab-version-tag.sh
 
 
 echo "Bump version number and push to gitlab."
@@ -33,10 +33,12 @@ echo "Bump version number and push to gitlab."
 #
 # Bump version read from last git tag
 #
+echo `git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=10`
+git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=1 |  awk 'BEGIN{FS=".";OFS="."} {$NF+=1; print $0}'
 {
     VERSION=`git for-each-ref refs/tags --sort=-taggerdate --format='%(refname:short)' --count=1 |  awk 'BEGIN{FS=".";OFS="."} {$NF+=1; print $0}'`
 } &> /dev/null
-[ "$VERSION" == "1.." ] && VERSION="2.0.0"
+[ "$VERSION" == "1.." ] && VERSION="1.0.0"
 [ -z "$VERSION" ] && VERSION="1.0.0"
 echo "  New version $VERSION"
 
@@ -61,6 +63,6 @@ echo "  Push git tag"
     git tag $VERSION
     git remote add origin git@gitlab.com:springville/hello-ng.git
     git push origin --tag
-} 2> >(sed 's/^/    /')
+} &> >(sed 's/^/    /')
 
 echo "END"
