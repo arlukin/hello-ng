@@ -9,7 +9,6 @@ plugins {
 
 import java.text.SimpleDateFormat
 
-
 group 'se.springville'
 version = grgit.tag.list().collect() { it.name }.sort().reverse(true)[0]
 
@@ -31,7 +30,7 @@ dependencies {
 }
 
 //
-// Compile, Unit test and build jar file
+// Compile
 //
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
@@ -55,6 +54,9 @@ project.tasks.processResources.dependsOn project.tasks.generateResources
 sourceSets.main.resources.srcDirs += [ "$buildDir/generated-resources" ]
 sourceSets.test.resources.srcDirs += [ "$buildDir/generated-resources" ]
 
+//
+// Unit test and build jar file
+//
 test {
     useJUnitPlatform {
         includeEngines "junit-jupiter"
@@ -77,7 +79,6 @@ jar {
     }
 }
 
-
 //
 // Create ShadowJar/FatJar
 //
@@ -86,7 +87,6 @@ shadowJar {
     archiveFileName = "hello-ng-shadow.jar"
 }
 project.tasks.build.dependsOn project.tasks.shadowJar
-
 
 //
 // Create K8s deployment file.

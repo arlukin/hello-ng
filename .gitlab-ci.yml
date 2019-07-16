@@ -21,7 +21,7 @@ cache:
 build:
   stage: build
   script:
-    - ./deploy/bump-gitlab-version-tag.sh
+    - ./bin/bump-gitlab-version-tag.sh
     - ./gradlew --build-cache remoteK8s
   artifacts:
     paths:
@@ -44,7 +44,7 @@ docker:
   services:
     - docker:dind
   script:
-    - ./deploy/docker-build-push.sh
+    - ./bin/docker-build-push.sh
   only:
     - master
 
