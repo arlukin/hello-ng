@@ -1,19 +1,15 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: hello-ng
-  labels:
-    app.kubernetes.io/instance: hello-ng
+  name: hello-ng-nodeport
 spec:
-  type: LoadBalancer
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 5000
+  type: NodePort
   selector:
     app.kubernetes.io/instance: hello-ng
+  ports:
+    - port: 80
+      targetPort: 5000
 ---
-
 kind: Deployment
 apiVersion: apps/v1
 metadata:
